@@ -1,24 +1,32 @@
--- load defaults i.e lua_lsp
-require("nvchad.configs.lspconfig").defaults()
+-- nvim/lua/lspconfig.lua
+local lspconfig = require("lspconfig")
 
-local lspconfig = require "lspconfig"
+-- Configuración para Python (usando pyright)
+lspconfig.pyright.setup({
+  settings = {
+    python = {
+      analysis = {
+        typeCheckingMode = "basic",  -- Ajusta el nivel de verificación de tipos
+      },
+    },
+  },
+})
 
--- EXAMPLE
-local servers = { "html", "cssls" }
-local nvlsp = require "nvchad.configs.lspconfig"
+-- Configuración para Java (usando jdtls)
+lspconfig.jdtls.setup({
+  cmd = { "jdtls" },  -- Comando para iniciar el servidor JDTLS
+  root_dir = lspconfig.util.root_pattern("pom.xml", ".git"),  -- Directorio raíz para proyectos Java
+})
 
--- lsps with default config
-for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup {
-    on_attach = nvlsp.on_attach,
-    on_init = nvlsp.on_init,
-    capabilities = nvlsp.capabilities,
-  }
-end
-
--- configuring single server, example: typescript
--- lspconfig.ts_ls.setup {
---   on_attach = nvlsp.on_attach,
---   on_init = nvlsp.on_init,
---   capabilities = nvlsp.capabilities,
--- }
+-- Configuración para PHP (usando intelephense)
+lspconfig.intelephense.setup({
+  settings = {
+    intelephense = {
+      environment = {
+        php = {
+          version = "7.4",  -- Especifica la versión de PHP si es necesario
+        },
+      },
+    },
+  },
+})
