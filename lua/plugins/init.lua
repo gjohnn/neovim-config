@@ -9,37 +9,39 @@ return {
     "williamboman/mason-lspconfig.nvim",
     dependencies = { "williamboman/mason.nvim", "neovim/nvim-lspconfig" },
     config = function()
-    require("mason-lspconfig").setup {
+    require("mason-lspconfig").setup({
       ensure_installed = {
-        "pyright",                -- Python
-        "jdtls",                  -- Java
-        "intelephense",           -- PHP
+        "pyright",       -- Python
+        "jdtls",         -- Java
+        "intelephense",  -- PHP
+        "ts_ls",         -- JavaScript/TypeScript (nuevo nombre)
       },
-    }
+    })
+
+    -- TypeScript with ts_ls
+    local lspconfig = require("lspconfig")
+    lspconfig.ts_ls.setup({
+      cmd = { "typescript-language-server", "--stdio" },
+      filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact" },
+      root_dir = lspconfig.util.root_pattern("package.json", "tsconfig.json", "jsconfig.json", ".git"),
+    })
     end,
   },
   {
     "Maan2003/lsp_lines.nvim",
     config = function()
     require("lsp_lines").setup()
-
-    -- Configurar cómo se muestran los errores
     vim.diagnostic.config({
-      virtual_text = true,  -- Activa los errores al lado del código
-      virtual_text = {
-        prefix = "",  -- Puedes personalizar el ícono que se usa para los errores
-        spacing = 4,  -- Espacio entre el error y el código
-      },
-      virtual_lines = true,  -- Activa errores en línea si prefieres la opción de líneas virtuales
-      update_in_insert = true,  -- Muestra los errores también en el modo de inserción
+      virtual_text = true,
+      virtual_text = { prefix = "", spacing = 4 },
+      virtual_lines = true,
+      update_in_insert = true,
     })
-
-    -- Atajo para alternar entre errores en línea y flotantes
     vim.keymap.set("n", "<Leader>e", function()
     local current_config = vim.diagnostic.config()
     vim.diagnostic.config({
-      virtual_lines = not current_config.virtual_lines, -- Alterna entre errores en línea
-      virtual_text = not current_config.virtual_text,   -- Alterna entre texto flotante y en línea
+      virtual_lines = not current_config.virtual_lines,
+      virtual_text = not current_config.virtual_text,
     })
     end, { desc = "Alternar Error Lens" })
     end,

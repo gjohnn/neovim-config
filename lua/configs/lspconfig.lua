@@ -24,9 +24,30 @@ lspconfig.intelephense.setup({
     intelephense = {
       environment = {
         php = {
-          version = "7.4",  -- Especifica la versión de PHP si es necesario
+          version = "8.3",  -- Especifica la versión de PHP si es necesario
         },
       },
     },
   },
+})
+
+-- Configuración para TypeScript, JavaScript y Astro (usando ts_ls)
+lspconfig.ts_ls.setup({
+  cmd = { "typescript-language-server", "--stdio" },
+  filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "astro" },  -- 🔥 Agregamos Astro aquí
+  root_dir = lspconfig.util.root_pattern("package.json", "tsconfig.json", "jsconfig.json", ".git"),
+                      settings = {
+                        typescript = {
+                          inlayHints = {
+                            includeInlayParameterNameHints = "all",
+                            includeInlayEnumMemberValueHints = true,
+                          },
+                        },
+                        javascript = {
+                          inlayHints = {
+                            includeInlayParameterNameHints = "all",
+                            includeInlayEnumMemberValueHints = true,
+                          },
+                        },
+                      },
 })
