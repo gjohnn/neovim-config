@@ -19,3 +19,10 @@ map("i", "<A-h>", "<Left>", { noremap = true, silent = true })
 map("i", "<A-l>", "<Right>", { noremap = true, silent = true })
 map("i", "<A-j>", "<Down>", { noremap = true, silent = true })
 map("i", "<A-k>", "<Up>", { noremap = true, silent = true })
+
+-- Movimiento en modo insert con Ctrl+h y Ctrl+l para moverse entre palabras
+map("i", "<C-h>", "<C-o>b", { noremap = true, silent = true })  -- Moverse a la palabra anterior
+map("i", "<C-l>", "<C-o>w", { noremap = true, silent = true })  -- Moverse a la siguiente palabra
+
+-- Borrar palabra completa con Ctrl+Backspace en modo insert
+map("i", "<C-BS>", "<C-w>", { noremap = true, silent = true })
