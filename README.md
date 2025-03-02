@@ -13,7 +13,13 @@ git clone https://github.com/gjohnn/neovim-config.git ~/.config/nvim
 # Start Neovim (NvChad will automatically install dependencies)
 nvim
 ```
+### If you want to user my poor wezterm config
 
+```sh
+mkdir .config/wezterm
+ln -s ~/.config/nvim/wezterm.lua ~/.config/wezterm/wezterm.lua
+
+```
 ## Update
 
 If you already have this configuration and want to update it, use:
@@ -26,8 +32,6 @@ git pull
 ## Requirements
 - Neovim (version 0.9+)
 - Nerd Fonts (for proper icon display)
-- [ripgrep](https://github.com/BurntSushi/ripgrep) (for fast search)
-- [fd](https://github.com/sharkdp/fd) (for file searching)
 
 ## Included Plugins
 - NvChad as the base
@@ -38,6 +42,3 @@ git pull
 
 ## Customization
 You can modify this configuration by editing the files in `~/.config/nvim/lua/custom/`.
-
-## Contact
-If you have any questions or suggestions, feel free to open an issue in this repository!!!
