@@ -24,5 +24,7 @@ map("i", "<A-k>", "<Up>", { noremap = true, silent = true })
 map("i", "<C-h>", "<C-o>b", { noremap = true, silent = true })  -- Moverse a la palabra anterior
 map("i", "<C-l>", "<C-o>w", { noremap = true, silent = true })  -- Moverse a la siguiente palabra
 
+-- Formateo de codigo
+
 -- Borrar palabra completa con Ctrl+Backspace en modo insert
 map("i", "<C-BS>", "<C-w>", { noremap = true, silent = true })
