@@ -16,13 +16,16 @@ dashboard.section.header.val = {
 -- Botones de inicio rápido
 dashboard.section.buttons.val = {
   dashboard.button("e", "  > New file", ":ene <BAR> startinsert <CR>"),
-  dashboard.button("f", "  > Find file", ":Telescope find_files<CR>"),
+  dashboard.button("f", "  > Find file", ":Telescope find_files<CR>"), 
   dashboard.button("r", "  > Recent files", ":Telescope oldfiles<CR>"),
-  dashboard.button("q", "  > Exit", ":qa<CR>")
+  dashboard.button("q", "󰗼  > Exit", ":qa<CR>") 
 }
 
 -- Mensaje en el pie de página
-dashboard.section.footer.val = "Juan Sebastián Guerrero Britos"
+dashboard.section.footer.val = {
+  "and those who tasted the bite of his sword named him...",
+  "                 THE DOOM SLAYER                       "
+}
 
 -- Configuración final
 alpha.setup(dashboard.config)
