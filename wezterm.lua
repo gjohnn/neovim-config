@@ -17,7 +17,7 @@ return {
   },
 
   -- Otras configuraciones de apariencia
-  color_scheme = "OneHalfDark", -- Puedes cambiar el esquema de colores aquí
-  font = wezterm.font("JetBrains Mono"), -- Puedes ajustar la fuente a tu preferencia
-  font_size = 12.0, -- Tamaño de la fuente
+  color_scheme = "Dracula", -- Puedes cambiar el esquema de colores aquí
+  font = wezterm.font("JetBrains Mono Nerd Font"), -- Puedes ajustar la fuente a tu preferencia
+  font_size = 16.0, -- Tamaño de la fuente
 }
